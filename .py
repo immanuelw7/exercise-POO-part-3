@@ -50,8 +50,12 @@ class Héros(NPC):
     def __init__(self):
         super().__init__()
     def attack(self, cible):
+        attackdé = random.randint(1,20)
+        if attackdé == 20:
+            dégat_dommage = random.randint(1, 8)
+            cible.subir_des_dommages(dégat_dommage)
+        elif attackdé == 1:
+            dégat_dommage = 0
+        elif attack dé <19 and attackdé > 2:
+    def subr_des_dommages(self, dégat_dommage):
         return
-    def subir_des_dommages(self, dégat_dommage):
-        return
-
-
