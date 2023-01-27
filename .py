@@ -42,8 +42,8 @@ class kobold(NPC):
         super().__init__()
     def attack(self, cible):
         return
-    def subir_des_dommages(self,dégat_dommage):
-        return
+    def subir_des_dommages(self,ouf_dommage):
+        self.vie -= ouf_dommage
 
 
 class Héros(NPC):
@@ -52,10 +52,18 @@ class Héros(NPC):
     def attack(self, cible):
         attackdé = random.randint(1,20)
         if attackdé == 20:
-            dégat_dommage = random.randint(1, 8)
+            cible.subir_des_dommages = random.randint(1, 8)
             cible.subir_des_dommages(dégat_dommage)
         elif attackdé == 1:
             dégat_dommage = 0
-        elif attack dé <19 and attackdé > 2:
-    def subr_des_dommages(self, dégat_dommage):
+        elif 19> attackdé <2 and cible.classe_darmure < attackdé:
+            dégat_dommage = random.randint(1, 6)
+            cible.subir_des_dommages(random.randint(1, 6))
+        else:
+            print('tu as foiré ton attaque')
+
+    def subr_des_dommages(self, ouf_dommage):
         return
+
+
+
