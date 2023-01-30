@@ -1,27 +1,31 @@
+#Enoch Immanuel Wang - 401
+#Fait le 30 javier 2022
+#importer les modules
 import random
+#on créée une fonction pour faire rouler dés
+def des():
+    roulade_des = [random.randint(1, 6) for i in range(4)]
+    roulade_des.sort(reverse=True)
+    return sum(roulade_des[:3])
 
-def dés():
-    roulade_dés = [random.randint(1, 6) for i in range(4)]
-    roulade_dés.sort(reverse=True)
-    return sum(roulade_dés[:3])
 
-
-
+#on créée la classe de NPC
 class NPC:
+    #initialisation
     def __init__(self):
-        self.force = dés()
-        self.agilité = dés()
-        self.constitution = dés()
-        self.intelligence = dés()
-        self.sagesse = dés()
-        self.charisme = dés()
+        self.force = des()
+        self.agilité = des()
+        self.constitution = des()
+        self.intelligence = des()
+        self.sagesse = des()
+        self.charisme = des()
         self.classe_darmure = random.randint(1, 12)
         self.nom = str
         self.race = str
         self.espece = str
         self.vie = random.randint(1,20)
         self.profession = str
-
+#créé une fonction pour les caractéristiques et les affichers
     def affichagedecaractéristique(self):
         print('nom:',self.nom)
         print('race:',self.race)
@@ -36,34 +40,36 @@ class NPC:
         print('charisme:',self.charisme)
         print('classe darmure:',self.classe_darmure)
 
-
+#crééer une classe pour le Kobold qui est un NPC
 class kobold(NPC):
+    #initialisation
     def __init__(self):
         super().__init__()
+    #créer une fonction pour attaquer
     def attack(self, cible):
         return
+    #crééer une fonction pour recevoir les dommages
     def subir_des_dommages(self,ouf_dommage):
         self.vie -= ouf_dommage
 
-
-class Héros(NPC):
+#créer une classe pour un Héro qui est un NPC
+class Heros(NPC):
+    #initialisation
     def __init__(self):
         super().__init__()
+    #une fonction pour attaquer
     def attack(self, cible):
-        attackdé = random.randint(1,20)
-        if attackdé == 20:
-            cible.subir_des_dommages = random.randint(1, 8)
-            cible.subir_des_dommages(dégat_dommage)
-        elif attackdé == 1:
-            dégat_dommage = 0
-        elif 19> attackdé <2 and cible.classe_darmure < attackdé:
-            dégat_dommage = random.randint(1, 6)
+        #rouler un dé de 20 faces
+        attackde = random.randint(1,20)
+        #condition, si le dé est égale à 20
+        if attackde == 20:
+            #on va lui faire des dégats d'un autre dée rouler de 1 à 8
+            cible.subir_des_dommages(random.randint(1, 8))
+        #si le dé rouler est plus grand que 2 et plus petit que 9, et plus grand que son armure,
+        elif 19>=attackde>=2 and cible.classe_darmure < attackde:
+            #on va lui faire des dégats d'un autre dée rouler de 1 à 8
             cible.subir_des_dommages(random.randint(1, 6))
-        else:
-            print('tu as foiré ton attaque')
-
-    def subr_des_dommages(self, ouf_dommage):
+    #créer une fonction pour recevoir les dommages
+    def subir_des_dommages(self, ouf_dommage):
+        #return rien
         return
-
-
-
